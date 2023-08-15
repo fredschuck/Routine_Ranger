@@ -1,11 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends '_layout.html' %} 
+
+
+{% block nav %} 
+<div>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="/">Home.</a>
+            <a class="nav-link" href="/login">Log In</a>
+        </div>
+</div>
+{% endblock %}
+
+
+{% block body %}
+<h1 class="text-center pb-5">Title</h1>
+<a href="/log" class="btn btn-dark">Log Workout</a><br>
+<a href="/create_routine" class="btn btn-dark">Create Routine</a><br>
+<a href="/create_exercise" class="btn btn-dark">Add Exercise</a><br>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends '_layout.html' %} 
+
+
+{% block nav %} 
+<div>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="/">Home.</a>
+            <a class="nav-link" href="/login">Log In</a>
+        </div>
+</div>
+{% endblock %}
+
+
+{% block body %}
+<h1 class="text-center pb-5">Log Workout</h1>
+<div class="d-flex flex-column">
+    <form action="/register" method="post">
+        <!-- <div class="mb-3">
+            <label for="form-name-id" class="form-label">Name</label>
+            <input type="text" class="form-control" id="form-name-id" name="form-name" placeholder="Enter Name" required>
+        </div> -->
+        <div class="mb-4">
+            <label for="droplist" class="form-label">Choose Routine</label>
+            <select class="form-select" id="droplist" name="droplist" aria-label="Default select example" required>
+            <option selected disabled value="">Choose Event</option>
+            {% for routine in routines %}
+                <option value="{{routine}}">{{routine}}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-light">Submit</button>
+        </form>
+</div>
+{% endblock %}

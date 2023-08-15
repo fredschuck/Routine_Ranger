@@ -1,11 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends '_layout.html' %} 
+
+
+{% block nav %} 
+<div>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="/">Home.</a>
+            <a class="nav-link" href="/login">Log In</a>
+        </div>
+</div>
+{% endblock %}
+
+
+{% block body %}
+<h1 class="text-center pb-5">Create Routine</h1>
+<div class="d-flex flex-column">
+    <form action="/add_routine" method="post">
+        <div class="mb-3">
+            <label for="form-name-id" class="form-label">Name</label>
+            <input type="text" class="form-control" id="form-name-id" name="routine_name" placeholder="Enter Routine Name" required>
+        </div>
+        <div class="mb-4">
+            <a href="/log" class="btn btn-primary">Add Exercise</a><br>
+        </div>
+        <button type="submit" class="btn btn-light">Submit</button>
+        </form>
+</div>
+{% endblock %}
