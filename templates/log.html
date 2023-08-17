@@ -15,21 +15,30 @@
 {% block body %}
 <h1 class="text-center pb-5">Log Workout</h1>
 <div class="d-flex flex-column">
-    <form action="/register" method="post">
-        <!-- <div class="mb-3">
-            <label for="form-name-id" class="form-label">Name</label>
-            <input type="text" class="form-control" id="form-name-id" name="form-name" placeholder="Enter Name" required>
-        </div> -->
+    <form action="/log_select" method="post">
         <div class="mb-4">
-            <label for="droplist" class="form-label">Choose Routine</label>
-            <select class="form-select" id="droplist" name="droplist" aria-label="Default select example" required>
-            <option selected disabled value="">Choose Event</option>
-            {% for routine in routines %}
-                <option value="{{routine}}">{{routine}}</option>
+            {% for exercise in exercises %}
+            <h3 class="">Exercise Name</h3>
+                {%if exercise == "Cardio"%}
+                <label for="time" class="form-label">Time</label>
+                <input type="text" class="form-control" id="time" name="form-name" placeholder="" required>
+                <label for="distance" class="form-label">Distance</label>
+                <input type="text" class="form-control" id="distance" name="form-name" placeholder="" required>
+                <label for="speed" class="form-label">Speed</label>
+                <input type="text" class="form-control" id="speed" name="form-name" placeholder="" required>
+                {% else %}
+                <label for="sets" class="form-label">Sets</label>
+                <input type="text" class="form-control" id="sets" name="form-name" placeholder="" required>
+                <label for="reps" class="form-label">Reps</label>
+                <input type="text" class="form-control" id="reps" name="form-name" placeholder="" required>
+                <label for="weight" class="form-label">Weight</label>
+                <input type="text" class="form-control" id="weight" name="form-name" placeholder="" required>
+                {% endif %}
             {% endfor %}
-            </select>
+            <label for="thoughts" class="form-label pt-5">Thoughts</label>
+            <textarea name="thoughts" class="form-control" aria-label="With textarea"></textarea>
         </div>
         <button type="submit" class="btn btn-light">Submit</button>
-        </form>
+    </form>
 </div>
 {% endblock %}
