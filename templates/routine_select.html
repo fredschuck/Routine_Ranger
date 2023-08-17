@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-link" aria-current="page" href="/">Home.</a>
-            <a class="nav-link" href="/login">Registered Users</a>
+            <a class="nav-link" href="/login">Log In</a>
         </div>
 </div>
 {% endblock %}
@@ -20,7 +20,7 @@
             <select class="form-select" id="form-routine" name="routine_droplist" aria-label="Default select example">
             <option selected disabled value="">Choose Routine</option>
             {% for routine in routines %}
-                <option value="{{routine}}">{{routine}}</option>
+                <option value="{{routine}}">{{routine}}</option> 
             {% endfor %}
             </select>
         </div>
