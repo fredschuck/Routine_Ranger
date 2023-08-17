@@ -1,0 +1,14 @@
+body {
+    background-color: #4c5d2d;
+}
+
+input {
+    max-width: 40%;
+}
+
+.input-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
