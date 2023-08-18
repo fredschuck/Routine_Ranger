@@ -21,7 +21,8 @@ app.config['SQLALCHEMY_ECHO'] = False # set to True to see SQL queries
 
 # app.config['ENV'] = 'development'
 # app.config['DEBUG'] = True
-# app.config['TESTING'] = True
+# app.config['TESTING'] = True 
+
 
 routine_list = {
     'Back': ['Deadlift', 'Pull Ups', 'Hammer Curls'],
