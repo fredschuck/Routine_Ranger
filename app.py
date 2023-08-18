@@ -1,9 +1,27 @@
+import os
 from flask import Flask, render_template, request, redirect
+from dotenv import load_dotenv
+
 
 app = Flask(__name__)
-app.config['ENV'] = 'development'
-app.config['DEBUG'] = True
-app.config['TESTING'] = True
+
+# Database Connection
+load_dotenv()
+
+db_user = os.getenv('DB_USER')
+db_pass = os.getenv('DB_PASS')
+db_host = os.getenv('DB_HOST')
+db_port = os.getenv('DB_PORT')
+db_name = os.getenv('DB_NAME')
+
+app.config['SQLALCHEMY_DATABASE_URI'] \
+    = f'postgresql://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_ECHO'] = False # set to True to see SQL queries
+
+# app.config['ENV'] = 'development'
+# app.config['DEBUG'] = True
+# app.config['TESTING'] = True
 
 routine_list = {
     'Back': ['Deadlift', 'Pull Ups', 'Hammer Curls'],

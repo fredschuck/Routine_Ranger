@@ -2,8 +2,36 @@ body {
     background-color: #4c5d2d;
 }
 
-input {
-    max-width: 40%;
+.input-s {
+    max-width: 60px;
+}
+
+.input-m {
+    max-width: 75px;
+}
+
+.input-l {
+    max-width: 100px;
+}
+
+/* Remove up/down arrows that display in input field - Safari/Chrome only */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Remove up/down arrows that display in input field - Other Browsers */
+input[type="number"] {
+    
+    /* Firefox */
+    -moz-appearance: textfield;
+    
+    /* Edge, IE */
+    appearance: textfield;
+    
+    /* Opera */
+    appearance: none;
 }
 
 .input-row {
