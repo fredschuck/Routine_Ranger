@@ -1,6 +1,8 @@
 import os
 from flask import Flask, render_template, request, redirect
 from dotenv import load_dotenv
+from src.routines import routines
+from src.exercises import exercises
 
 
 app = Flask(__name__)
@@ -47,6 +49,7 @@ def create_routine():
 @app.post('/add_routine')
 def add_routine():
     routine = request.form.get('routine_name', 'error')
+    routines.add_routine(routine)
     routine_list[f'{routine}'] = []
     return redirect('/')
 
