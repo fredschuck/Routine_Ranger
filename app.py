@@ -89,3 +89,8 @@ def save_log():
 @app.get('/log_bodyweight')
 def log_bodyweight():
     return render_template('log_bodyweight.html')
+
+
+# DON'T FORGET THAT CARDIO HAS INCLINE
+# Create a name field for exercises that auto completes or auto generates exercise options
+# Allow the user to be able to log in and immediately choose how simple or complex they want the app to be
