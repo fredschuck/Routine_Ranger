@@ -1,6 +1,6 @@
 from src.models import db, Exercise, RoutineExercise, Routine
 
-class Exercise:
+class Exercises:
     def __init__(self):
         pass
 
@@ -29,3 +29,5 @@ class Exercise:
         db.session.delete(exercise)
         db.session.commit()
         return exercise
+    
+exercises = Exercises()
