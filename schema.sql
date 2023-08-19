@@ -6,11 +6,10 @@ DROP TABLE IF EXISTS exercise;
 DROP TABLE IF EXISTS "user" CASCADE;
 
 -- CREATE TABLES
-
 CREATE TABLE routine (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    user_id INTEGER REFERENCES "user"(id)
+    name VARCHAR (80) NOT NULL
+    -- user_id INTEGER REFERENCES "user" ON DELETE CASCADE
 );
 
 CREATE TABLE exercise (
@@ -19,14 +18,29 @@ CREATE TABLE exercise (
     sets INTEGER,
     reps INTEGER,
     weight INTEGER,
-    time INTEGER,
+    height INTEGER,
     speed INTEGER,
     distance INTEGER,
-    routine_id INTEGER REFERENCES routine(id)
+    time INTEGER
+);
+
+CREATE TABLE routine_exercise (
+    id SERIAL PRIMARY KEY,
+    routine_id INTEGER REFERENCES routine ON DELETE CASCADE,
+    exercise_id INTEGER REFERENCES exercise ON DELETE CASCADE
+);
+
+CREATE TABLE bodyweight (
+    id SERIAL PRIMARY KEY,
+    weight INTEGER,
+    date DATE DEFAULT CURRENT_DATE,
+    user_id INTEGER REFERENCES "user" ON DELETE CASCADE
 );
 
 CREATE TABLE "user" (
     id SERIAL PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(50) NOT NULL
+    username VARCHAR (80) UNIQUE NOT NULL,
+    password VARCHAR (100) NOT NULL,
+    email VARCHAR (100) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
