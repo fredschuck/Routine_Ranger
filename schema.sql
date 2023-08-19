@@ -13,15 +13,22 @@ CREATE TABLE routine (
 );
 
 CREATE TABLE exercise (
-    id SERIAL PRIMARY KEY,
+    exercise_id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
+);
+
+CREATE TABLE logged_exercises (
+    id SERIAL PRIMARY KEY,
+    exercise_id INTEGER REFERENCES exercise ON DELETE CASCADE,
     sets INTEGER,
     reps INTEGER,
     weight INTEGER,
     height INTEGER,
     speed INTEGER,
     distance INTEGER,
-    time INTEGER
+    time INTEGER,
+    date DATE DEFAULT CURRENT_DATE,
+    user_id INTEGER REFERENCES "user" ON DELETE CASCADE
 );
 
 CREATE TABLE routine_exercise (
