@@ -1,7 +1,7 @@
 from src.models import db, Routine, Exercise, RoutineExercise, Bodyweight, User
 
-class Routine:
-    
+class Routines:
+
     def __init__(self):
         pass
 
@@ -31,4 +31,4 @@ class Routine:
         db.session.commit()
         return routine
     
-routine = Routine()
+routines = Routines()
