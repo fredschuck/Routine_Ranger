@@ -19,6 +19,18 @@
             <label for="form-name-id" class="form-label">Name</label>
             <input type="text" class="form-control" id="form-name-id" name="exercise_name" placeholder="Enter Exercise Name" required>
         </div>
+        <div class="mb-3">
+            <label for="form-name-id" class="form-label">What will the exercise consist of?</label>
+            <select id="multiSelect" class="form-select" multiple aria-label="multiple select example">
+                <option value="">Sets</option>
+                <option value="">Reps</option>
+                <option value="">Weight</option>
+                <option value="">Height</option>
+                <option value="">Speed</option>
+                <option value="">Distance</option>
+                <option value="">Time</option>
+              </select>
+        </div>
         <div class="mb-4">
             <label for="form-routine" class="form-label">Add to Routine</label>
             <select class="form-select" id="form-routine" name="routine_droplist" aria-label="Default select example">
@@ -40,4 +52,6 @@
         <button type="submit" class="btn btn-dark">Submit</button> 
         </form>
 </div>
+
+<script src="/static/js/create_exercise.js"></script>
 {% endblock %}
