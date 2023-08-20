@@ -21,14 +21,14 @@
         </div>
         <div class="mb-3">
             <label for="form-name-id" class="form-label">What will the exercise consist of?</label>
-            <select id="multiSelect" class="form-select" multiple aria-label="multiple select example">
-                <option value="">Sets</option>
-                <option value="">Reps</option>
-                <option value="">Weight</option>
-                <option value="">Height</option>
-                <option value="">Speed</option>
-                <option value="">Distance</option>
-                <option value="">Time</option>
+            <select id="multiSelect" class="form-select" name="exercise_attributes" multiple aria-label="multiple select example">
+                <option value="sets" name="attribute">Sets</option>
+                <option value="reps" name="attribute">Reps</option>
+                <option value="weight" name="attribute">Weight</option>
+                <option value="height" name="attribute">Height</option>
+                <option value="speed" name="attribute">Speed</option>
+                <option value="distance" name="attribute">Distance</option>
+                <option value="time" name="attribute">Time</option>
               </select>
         </div>
         <div class="mb-4">
@@ -36,7 +36,7 @@
             <select class="form-select" id="form-routine" name="routine_droplist" aria-label="Default select example">
             <option selected disabled value="">Choose Routine</option>
             {% for routine in routines %}
-                <option value="{{routine}}">{{routine}}</option>
+                <option value="{{routine.routine_id}}">{{routine.routine_name}}</option>
             {% endfor %}
             </select>
         </div>
