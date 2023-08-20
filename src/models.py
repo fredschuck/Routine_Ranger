@@ -53,17 +53,46 @@ class ExerciseAttributes(db.Model):
     def __repr__(self):
         return f'{self.exercise.exercise_name}. Sets: {self.sets}. Reps: {self.reps}. Weight: {self.weight}. Height: {self.height}. Speed: {self.speed}. Distance: {self.distance}. Time: {self.time}'
 
-# # Routine/Exercise Model
-# class RoutineExercise(db.Model):
-#     routine_exercise_id = db.Column(db.Integer, primary_key=True)
-#     routine_id = db.Column(db.Integer, db.ForeignKey('routine.routine_id'), nullable=False)
-#     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.exercise_id'), nullable=False)
-#     routine = db.relationship('Routine', backref='routine_exercises', lazy=True)
-#     exercise = db.relationship('Exercise', backref='routine_exercises', lazy=True)
+# LoggedExercise Model
+class LoggedExercises(db.Model):
+    '''This class contains methods for interacting with the LoggedExercises model'''
+    logged_exercises_id = db.Column()
+    exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.exercise_id'), nullable=False)
+    exercise = db.relationship('Exercise', backref='', lazy=True)
+    sets = db.Column(db.Integer, nullable=True)
+    reps = db.Column(db.Integer, nullable=True)
+    weight = db.Column(db.Integer, nullable=True)
+    height = db.Column(db.Integer, nullable=True)
+    speed = db.Column(db.Integer, nullable=True)
+    distance = db.Column(db.Integer, nullable=True)
+    time = db.Column(db.Integer, nullable=True)
 
-#     def __init__(self, routine_id, exercise_id):
-#         self.routine_id = routine_id
-#         self.exercise_id = exercise_id
+    def __init__(self, exercise_id, sets, reps, weight, height, speed, distance, time):
+        self.exercise_id = exercise_id
+        self.sets = sets
+        self.reps = reps
+        self.weight = weight
+        self.height = height
+        self.speed = speed
+        self.distance = distance
+        self.time = time
+
+    def __repr__(self):
+        return f'Exercise ID: {self.exercise_id}. Sets: {self.sets}.' #finish
+
+
+
+# Routine/Exercise Model
+class RoutineExercise(db.Model):
+    routine_exercise_id = db.Column(db.Integer, primary_key=True)
+    routine_id = db.Column(db.Integer, db.ForeignKey('routine.routine_id'), nullable=False)
+    exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.exercise_id'), nullable=False)
+    routine = db.relationship('Routine', backref='routine_exercises', lazy=True)
+    exercise = db.relationship('Exercise', backref='routine_exercises', lazy=True)
+
+    def __init__(self, routine_id, exercise_id):
+        self.routine_id = routine_id
+        self.exercise_id = exercise_id
 
 # # Bodyweight Model
 # class Bodyweight(db.Model):
