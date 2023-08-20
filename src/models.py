@@ -78,7 +78,7 @@ class LoggedExercises(db.Model):
         self.time = time
 
     def __repr__(self):
-        return f'Exercise ID: {self.exercise_id}. Sets: {self.sets}.' #finish
+        return f'Exercise ID: {self.exercise_id}. Sets: {self.sets}.' #finish...
 
 
 
