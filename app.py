@@ -28,7 +28,6 @@ app.config['SQLALCHEMY_ECHO'] = False # set to True to see SQL queries
 # app.config['TESTING'] = True 
 
 db.init_app(app)
-app.run()
 
 @app.get('/')
 def index():
