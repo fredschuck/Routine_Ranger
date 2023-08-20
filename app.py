@@ -74,7 +74,6 @@ def add_exercise():
         if attribute == 'time':
             time = True
     exercise_attributes.add_attributes(new_exercise.exercise_id, sets, reps, weight, height, speed, distance, time)
-    # exercise_attributes.add_attributes(1, True, True, True, True, True, True, True)
     # routine = request.form.get('routine_droplist', 'error')
     return redirect('/')
 
@@ -91,16 +90,16 @@ def log_select():
     routine = request.form.get('routine_droplist', 'error')
     return redirect(f'/log_workout/{routine}')
 
-@app.get('/log_workout/<routine>')
-def log_workout(routine):
-    for key, value in routine_list.items():
-        if key == routine:
-            return render_template('log.html', routine=value)
-    return redirect('/error')
+# @app.get('/log_workout/<routine>')
+# def log_workout(routine):
+#     for key, value in routine_list.items():
+#         if key == routine:
+#             return render_template('log.html', routine=value)
+#     return redirect('/error')
 
 @app.post('/log')
 def save_log():
-    return render_template('routine_select.html', routines=routine_list)
+    return render_template('routine_select.html', routines=routines.get_all_routines())
 
 @app.get('/log_bodyweight')
 def log_bodyweight():
