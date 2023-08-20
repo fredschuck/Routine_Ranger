@@ -1,14 +1,12 @@
-from src.models import db, Exercise, RoutineExercise, Routine
+from src.models import db, Exercise
 
-class Exercise:
-    def __init__(self):
-        pass
+class Exercises:
 
     def get_exercise(self, exercise_id):
         exercise = Exercise.query.filter_by(exercise_id=exercise_id).first()
         return exercise
 
-    def get_exercises(self):
+    def get_all_exercises(self):
         exercises = Exercise.query.all()
         return exercises
 
@@ -29,3 +27,5 @@ class Exercise:
         db.session.delete(exercise)
         db.session.commit()
         return exercise
+    
+exercises = Exercises()
