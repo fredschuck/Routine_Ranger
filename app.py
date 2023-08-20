@@ -1,8 +1,10 @@
 import os
 from flask import Flask, render_template, request, redirect
 from dotenv import load_dotenv
+from src.models import db, Routine, Exercise, ExerciseAttributes
 from src.routines import routines
 from src.exercises import exercises
+from src.exercise_attributes import exercise_attributes
 
 
 app = Flask(__name__)
@@ -25,14 +27,8 @@ app.config['SQLALCHEMY_ECHO'] = False # set to True to see SQL queries
 # app.config['DEBUG'] = True
 # app.config['TESTING'] = True 
 
-
-routine_list = {
-    'Back': ['Deadlift', 'Pull Ups', 'Hammer Curls'],
-    'Chest': ['Bench Press', 'Cardio'],
-}
-exercise_list = {}
-body_weight = {}
-
+db.init_app(app)
+app.run()
 
 @app.get('/')
 def index():
@@ -50,20 +46,36 @@ def create_routine():
 def add_routine():
     routine = request.form.get('routine_name', 'error')
     routines.add_routine(routine)
-    routine_list[f'{routine}'] = []
     return redirect('/')
 
 @app.get('/create_exercise')
 def create_exercise():
-    return render_template('create_exercise.html', routines=routine_list)
+    return render_template('create_exercise.html', routines=routines.get_all_routines())
 
 @app.post('/add_exercise')
 def add_exercise():
     exercise = request.form.get('exercise_name', 'error')
-    exercise_list[f'{exercise}'] = []
-    routine = request.form.get('routine_droplist', 'error')
-    routine_list[f'{routine}'].append(f'{exercise}')
-    exercises.add_exercise(exercise)
+    new_exercise = exercises.add_exercise(exercise)
+    attributes = request.form.getlist('exercise_attributes')
+    sets, reps, weight, height, speed, distance, time = False, False, False, False, False, False, False
+    for attribute in attributes: #create a nested for loop? 
+        if attribute == 'sets':
+            sets = True
+        if attribute == 'reps':
+            reps = True
+        if attribute == 'weight':
+            weight = True
+        if attribute == 'height':
+            height = True
+        if attribute == 'speed':
+            speed = True
+        if attribute == 'distance':
+            distance = True
+        if attribute == 'time':
+            time = True
+    exercise_attributes.add_attributes(new_exercise.exercise_id, sets, reps, weight, height, speed, distance, time)
+    # exercise_attributes.add_attributes(1, True, True, True, True, True, True, True)
+    # routine = request.form.get('routine_droplist', 'error')
     return redirect('/')
 
 @app.errorhandler(404)
@@ -72,7 +84,7 @@ def page_not_found(e):
 
 @app.get('/log')
 def log():
-    return render_template('routine_select.html', routines=routine_list)
+    return render_template('routine_select.html', routines=routines.get_all_routines())
 
 @app.post('/log_select')
 def log_select():
