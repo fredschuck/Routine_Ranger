@@ -1,16 +1,7 @@
 from src.models import db, ExerciseAttributes
 
-class ExerciseAttributes:
+class ExerciseAttribute:
     '''This class contains methods for interacting with the ExerciseAttributes model'''
-    # def __init__(self, exercise_id, sets, reps, weight, height, speed, distance, time):
-    #     self.exercise_id = exercise_id
-    #     self.sets = sets
-    #     self.reps = reps
-    #     self.weight = weight
-    #     self.height = height
-    #     self.speed = speed
-    #     self.distance = distance
-    #     self.time = time
 
     def get_attributes(self):
         '''Returns a list of all exercise attributes'''
@@ -29,4 +20,4 @@ class ExerciseAttributes:
         db.session.commit()
         return new_attributes
     
-exercise_attributes = ExerciseAttributes()
+exercise_attributes = ExerciseAttribute()
