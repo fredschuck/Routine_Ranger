@@ -4,6 +4,7 @@ db = SQLAlchemy()
 
 # Routine Model
 class Routine(db.Model):
+    '''This class contains methods for interacting with the Routine model'''
     routine_id = db.Column(db.Integer, primary_key=True)
     routine_name = db.Column(db.String(80), nullable=False)
 
@@ -15,6 +16,7 @@ class Routine(db.Model):
 
 # Exercise Model
 class Exercise(db.Model):
+    '''This class contains methods for interacting with the Exercise model'''
     exercise_id = db.Column(db.Integer, primary_key=True)
     exercise_name = db.Column(db.String(80), nullable=False)
 
@@ -26,6 +28,7 @@ class Exercise(db.Model):
 
 # Exercise Model
 class ExerciseAttributes(db.Model):
+    '''This class contains methods for interacting with the ExerciseAttributes model'''
     exercise_attributes_id = db.Column(db.Integer, primary_key=True)
     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.exercise_id'), nullable=False)
     exercise = db.relationship('Exercise', backref='exercise_attributes', lazy=True)
