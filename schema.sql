@@ -7,21 +7,41 @@ DROP TABLE IF EXISTS "user" CASCADE;
 
 -- CREATE TABLES
 CREATE TABLE routine (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR (80) NOT NULL
+    routine_id SERIAL PRIMARY KEY,
+    routine_name VARCHAR (80) NOT NULL
     -- user_id INTEGER REFERENCES "user" ON DELETE CASCADE
 );
 
 CREATE TABLE exercise (
+    exercise_id SERIAL PRIMARY KEY,
+    exercise_name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE exercise_attributes (
+    exercise_attributes_id SERIAL PRIMARY KEY,
+    exercise_id INTEGER REFERENCES exercise ON DELETE CASCADE,
+    sets BOOLEAN NOT NULL,
+    reps BOOLEAN NOT NULL,
+    weight BOOLEAN NOT NULL,
+    height BOOLEAN NOT NULL,
+    speed BOOLEAN NOT NULL,
+    distance BOOLEAN NOT NULL,
+    time BOOLEAN NOT NULL
+    -- user_id INTEGER REFERENCES "user" ON DELETE CASCADE
+)
+
+CREATE TABLE logged_exercises (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
+    exercise_id INTEGER REFERENCES exercise ON DELETE CASCADE,
+    date DATE DEFAULT CURRENT_DATE,
     sets INTEGER,
     reps INTEGER,
     weight INTEGER,
     height INTEGER,
     speed INTEGER,
     distance INTEGER,
-    time INTEGER
+    time INTEGER,
+    user_id INTEGER REFERENCES "user" ON DELETE CASCADE
 );
 
 CREATE TABLE routine_exercise (
