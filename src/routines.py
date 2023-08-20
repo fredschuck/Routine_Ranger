@@ -1,34 +1,37 @@
-from src.models import db, Routine, Exercise, RoutineExercise, Bodyweight, User
+from src.models import db, Routine
 
-class Routine:
-    
-    def __init__(self):
-        pass
+class Routines:
+    '''This class contains methods for interacting with the Routine model'''
 
     def get_routine(self, routine_id):
+        '''Returns a routine object based on the routine_id'''
         routine = Routine.query.filter_by(routine_id=routine_id).first()
         return routine
 
-    def get_routines(self):
-        routines = Routine.query.all()
-        return routines
+    def get_all_routines(self):
+        '''Returns a list of all routine objects'''
+        all_routines = Routine.query.all()
+        return all_routines
 
     def add_routine(self, routine_name):
+        '''Adds a new routine to the database'''
         new_routine = Routine(routine_name)
         db.session.add(new_routine)
         db.session.commit()
         return new_routine
 
     def update_routine(self, routine_id, routine_name):
+        '''Updates a routine in the database'''
         routine = Routine.query.filter_by(routine_id=routine_id).first()
         routine.routine_name = routine_name
         db.session.commit()
         return routine
 
     def delete_routine(self, routine_id):
+        '''Deletes a routine from the database'''
         routine = Routine.query.filter_by(routine_id=routine_id).first()
         db.session.delete(routine)
         db.session.commit()
         return routine
     
-routine = Routine()
+routines = Routines()
