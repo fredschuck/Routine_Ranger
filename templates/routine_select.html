@@ -20,7 +20,7 @@
             <select class="form-select" id="form-routine" name="routine_droplist" aria-label="Default select example">
             <option selected disabled value="">Choose Routine</option>
             {% for routine in routines %}
-                <option value="{{routine}}">{{routine}}</option> 
+                <option value="{{routine.routine_id}}">{{routine.routine_name}}</option> 
             {% endfor %}
             </select>
         </div>
