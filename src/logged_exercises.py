@@ -3,7 +3,7 @@ from src.models import db, LoggedExercises
 class LoggedExercise:
     '''This class contains methods to interact with the LoggedExercise model'''
     
-    def get_logged_exercise(self, logged_exercise_id):
+    def get_logged_exercise(self, log_id):
         '''Returns a logged exercise object based on the logged_exercise_id'''
         logged_exercise = LoggedExercises.query.filter_by(logged_exercise_id=logged_exercise_id).first()
         return logged_exercise
