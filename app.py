@@ -1,10 +1,12 @@
 import os
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from dotenv import load_dotenv
 from src.models import db, Routine, Exercise, ExerciseAttributes
 from src.routines import routines
 from src.exercises import exercises
 from src.exercise_attributes import exercise_attributes
+from src.logged_exercises import logged_exercises
+from src.routine_exercise import routine_exercise
 
 
 app = Flask(__name__)
@@ -73,7 +75,9 @@ def add_exercise():
         if attribute == 'time':
             time = True
     exercise_attributes.add_attributes(new_exercise.exercise_id, sets, reps, weight, height, speed, distance, time)
-    # routine = request.form.get('routine_droplist', 'error')
+    routine = request.form.get('routine_droplist', 'error')
+    if routine != 'error':
+        routines.add_exercise_to_routine(routine, new_exercise.exercise_id)
     return redirect('/')
 
 @app.errorhandler(404)
@@ -86,15 +90,16 @@ def log():
 
 @app.post('/log_select')
 def log_select():
-    routine = request.form.get('routine_droplist', 'error')
-    return redirect(f'/log_workout/{routine}')
+    routine_id = request.form.get('routine_droplist', 'error')
+    routine = routines.get_routine(routine_id)
+    return redirect(f'/log_workout/{routine.routine_name}/{routine.routine_id}')
 
-# @app.get('/log_workout/<routine>')
-# def log_workout(routine):
-#     for key, value in routine_list.items():
-#         if key == routine:
-#             return render_template('log.html', routine=value)
-#     return redirect('/error')
+@app.get('/log_workout/<routine_name>/<routine_id>')
+def log_workout(routine_name, routine_id):
+    exercises = routine_exercise.get_exercises_by_routine_id(routine_id)
+    attributes = exercise_attributes.get_attributes_by_routine_id(routine_id)
+    return render_template('log.html', routine=exercises, attributes=attributes)
+    # return redirect('/error')
 
 @app.post('/log')
 def save_log():
@@ -108,3 +113,4 @@ def log_bodyweight():
 # DON'T FORGET THAT CARDIO HAS INCLINE
 # Create a name field for exercises that auto completes or auto generates exercise options
 # Allow the user to be able to log in and immediately choose how simple or complex they want the app to be
+# What do you do when you need to log an exercise session? that isn't a routine?

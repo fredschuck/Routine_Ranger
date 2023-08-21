@@ -5,7 +5,7 @@ class LoggedExercise:
     
     def get_logged_exercise(self, log_id):
         '''Returns a logged exercise object based on the logged_exercise_id'''
-        logged_exercise = LoggedExercises.query.filter_by(logged_exercise_id=logged_exercise_id).first()
+        logged_exercise = LoggedExercises.query.filter_by(log_id=log_id).first()
         return logged_exercise
     
     def get_all_logged_exercises(self):
@@ -43,4 +43,4 @@ class LoggedExercise:
         db.session.commit()
         return logged_exercise
     
-logged_exercise = LoggedExercise()
+logged_exercises = LoggedExercise()

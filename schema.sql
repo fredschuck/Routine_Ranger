@@ -47,7 +47,7 @@ CREATE TABLE logged_exercises (
 );
 
 CREATE TABLE routine_exercise (
-    id SERIAL PRIMARY KEY,
+    routine_exercise_id SERIAL PRIMARY KEY,
     routine_id INTEGER REFERENCES routine ON DELETE CASCADE,
     exercise_id INTEGER REFERENCES exercise ON DELETE CASCADE
 );

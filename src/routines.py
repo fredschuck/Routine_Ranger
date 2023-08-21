@@ -1,4 +1,4 @@
-from src.models import db, Routine
+from src.models import db, Routine, RoutineExercise
 
 class Routines:
     '''This class contains methods for interacting with the Routine model'''
@@ -19,6 +19,13 @@ class Routines:
         db.session.add(new_routine)
         db.session.commit()
         return new_routine
+    
+    def add_exercise_to_routine(self, routine_id, exercise_id):
+        '''Links an exercise to a routine'''
+        new_routine_exercise = RoutineExercise(routine_id, exercise_id)
+        db.session.add(new_routine_exercise)
+        db.session.commit()
+        return new_routine_exercise #should it return the exercise instance?
 
     def update_routine(self, routine_id, routine_name):
         '''Updates a routine in the database'''

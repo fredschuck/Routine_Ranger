@@ -56,7 +56,7 @@ class ExerciseAttributes(db.Model):
 # LoggedExercise Model
 class LoggedExercises(db.Model):
     '''This class contains methods for interacting with the LoggedExercises model'''
-    log_id = db.Column()
+    log_id = db.Column(db.Integer, primary_key=True)
     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.exercise_id'), nullable=False)
     exercise = db.relationship('Exercise', backref='log_exercise', lazy=True)
     # routine_id = db.Column(db.Integer, db.ForeignKey('routine.routine_id'), nullable=True)
