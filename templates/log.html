@@ -29,38 +29,15 @@
                 </div>
             </div>
             {% for exercise in routine %}
-            <h3 class="pt-3">{{exercise}}</h3>
-                {% if value == "Cardio" %}
+            <h3 class="pt-3">{{exercise.exercise_name}}</h3>
                 <div class="d-flex input-row">
+                    {% for attribute in attributes %}
                     <div class="flex-item">
-                        <label for="time" class="form-label">Time</label>
+                        <label for="time" class="form-label">{{attribute}}</label>
                         <input type="number" class="form-control input-l" id="time" name="form-name" placeholder="">
                     </div>
-                    <div class="flex-item">
-                        <label for="distance" class="form-label">Distance</label>
-                        <input type="number" class="form-control input-l" id="distance" name="form-name" placeholder="">
-                    </div>
-                    <div class="flex-item">
-                        <label for="speed" class="form-label">Speed</label>
-                        <input type="number" class="form-control input-l" id="speed" name="form-name" placeholder="">
-                    </div>
+                    {% endfor %}
                 </div>
-                {% else %}
-                <div class="d-flex input-row">
-                    <div class="flex-item">
-                        <label for="sets" class="form-label">Sets</label>
-                        <input type="number" class="form-control input-s" id="sets" name="form-name" placeholder="">
-                    </div>
-                    <div class="flex-item">
-                        <label for="reps" class="form-label">Reps</label>
-                        <input type="number" class="form-control input-m" id="reps" name="form-name" placeholder="">
-                    </div>
-                    <div class="flex-item">
-                        <label for="weight" class="form-label">Weight</label>
-                        <input type="number" class="form-control input-l" id="weight" name="form-name" placeholder="">
-                    </div>
-                </div>
-                {% endif %}
             {% endfor %}
             <h3 for="thoughts" class="form-label pt-5 text-center">Thoughts</h3>
             <textarea name="thoughts" class="form-control" aria-label="With textarea"></textarea>

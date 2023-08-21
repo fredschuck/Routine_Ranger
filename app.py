@@ -97,7 +97,10 @@ def log_select():
 @app.get('/log_workout/<routine_name>/<routine_id>')
 def log_workout(routine_name, routine_id):
     exercises = routine_exercise.get_exercises_by_routine_id(routine_id)
-    attributes = exercise_attributes.get_attributes_by_routine_id(routine_id)
+    attributes = {}
+    for exercise in exercises:
+        attributes_list = exercise_attributes.get_attributes_by_exercise_id(exercise.exercise_id)
+        attributes[exercise.exercise_id] = attributes_list
     return render_template('log.html', routine=exercises, attributes=attributes)
     # return redirect('/error')
 
