@@ -31,9 +31,11 @@ CREATE TABLE exercise_attributes (
 )
 
 CREATE TABLE logged_exercises (
-    id SERIAL PRIMARY KEY,
-    exercise_id INTEGER REFERENCES exercise ON DELETE CASCADE,
-    date DATE DEFAULT CURRENT_DATE,
+    log_id SERIAL PRIMARY KEY,
+    logged_exercise_id INTEGER REFERENCES exercise ON DELETE CASCADE,
+    -- routine_id INTEGER REFERENCES routine ON DELETE CASCADE,
+    log_date DATE DEFAULT CURRENT_DATE,
+    log_time TIME DEFAULT CURRENT_TIME,
     sets INTEGER,
     reps INTEGER,
     weight INTEGER,
@@ -41,7 +43,7 @@ CREATE TABLE logged_exercises (
     speed INTEGER,
     distance INTEGER,
     time INTEGER,
-    user_id INTEGER REFERENCES "user" ON DELETE CASCADE
+    -- user_id INTEGER REFERENCES "user" ON DELETE CASCADE
 );
 
 CREATE TABLE routine_exercise (
