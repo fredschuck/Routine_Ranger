@@ -56,9 +56,13 @@ class ExerciseAttributes(db.Model):
 # LoggedExercise Model
 class LoggedExercises(db.Model):
     '''This class contains methods for interacting with the LoggedExercises model'''
-    logged_exercises_id = db.Column()
+    log_id = db.Column()
     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.exercise_id'), nullable=False)
-    exercise = db.relationship('Exercise', backref='', lazy=True)
+    exercise = db.relationship('Exercise', backref='log_exercise', lazy=True)
+    # routine_id = db.Column(db.Integer, db.ForeignKey('routine.routine_id'), nullable=True)
+    # routine = db.relationship('Routine', backref='log_routine', lazy=True)
+    log_date = db.Column(db.DateTime, nullable=False)
+    log_time = db.Column(db.DateTime, nullable=False)
     sets = db.Column(db.Integer, nullable=True)
     reps = db.Column(db.Integer, nullable=True)
     weight = db.Column(db.Integer, nullable=True)
@@ -67,8 +71,10 @@ class LoggedExercises(db.Model):
     distance = db.Column(db.Integer, nullable=True)
     time = db.Column(db.Integer, nullable=True)
 
-    def __init__(self, exercise_id, sets, reps, weight, height, speed, distance, time):
+    def __init__(self, exercise_id, log_date, log_time, sets, reps, weight, height, speed, distance, time):
         self.exercise_id = exercise_id
+        self.log_date = log_date
+        self.log_time = log_time
         self.sets = sets
         self.reps = reps
         self.weight = weight
@@ -78,7 +84,7 @@ class LoggedExercises(db.Model):
         self.time = time
 
     def __repr__(self):
-        return f'Exercise ID: {self.exercise_id}. Sets: {self.sets}.' #finish...
+        return f'Exercise ID: {self.exercise_id}. Sets: {self.sets}. Reps: {self.reps}. Weight: {self.weight}. Height: {self.height}. Speed: {self.speed}. Distance: {self.distance}. Time: {self.time}'
 
 
 
