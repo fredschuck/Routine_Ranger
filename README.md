@@ -42,19 +42,22 @@
 [![Express][Express.js]][Express-url]
 [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 [![jinja][jinja.com]][jinja-url]
+[![postgres][postgres.com]][postgres-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Version 1.0   
+- [ ] Version 1.0
     - [x] Create prototype of application using Bootstrap, HTML, and CSS
     - [x] Add routing logic
-    - [x] Add database logic
+    - [x] Add database logic using Postgres
+    - [ ] Add user interface logic
 - [ ] Version 2.0 
     - [ ] Redesign UI
     - [ ] Add dashboard to view stats
+    - [ ] Add user authentication
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -100,3 +103,5 @@ Below is an example of how you can instruct your audience on installing and sett
 [Bootstrap-url]: https://getbootstrap.com
 [Jinja.com]: https://img.shields.io/badge/jinja-lightgray?style=for-the-badge&logo=jinja&logoColor=black
 [Jinja-url]: https://jinja.palletsprojects.com/en/3.1.x/
+[Postgres.com]: https://img.shields.io/badge/postgresql-31648C?style=for-the-badge&logo=postgresql&logoColor=white
+[Postgres-url]: https://www.postgresql.org/
