@@ -53,11 +53,10 @@
     - [x] Create prototype of application using Bootstrap, HTML, and CSS
     - [x] Add routing logic
     - [x] Add database logic using Postgres
-    - [ ] Add user interface logic
 - [ ] Version 2.0 
     - [ ] Redesign UI
     - [ ] Add dashboard to view stats
-    - [ ] Add user authentication
+    - [ ] Add user interface logic
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
