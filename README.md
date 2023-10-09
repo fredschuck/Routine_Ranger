@@ -101,7 +101,7 @@ Below is an example of how you can instruct your audience on installing and sett
 [Express-url]: https://expressjs.com
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
-[Jinja.com]: https://img.shields.io/badge/jinja-lightgray?style=for-the-badge&logo=jinja&logoColor=black
+[Jinja.com]: https://img.shields.io/badge/jinja-C9C9C9?style=for-the-badge&logo=jinja&logoColor=black
 [Jinja-url]: https://jinja.palletsprojects.com/en/3.1.x/
 [Postgres.com]: https://img.shields.io/badge/postgres-31648C?style=for-the-badge&logo=postgresql&logoColor=white
 [Postgres-url]: https://www.postgresql.org/
