@@ -5,7 +5,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="static/images/logo-olive.png" alt="Logo" width="300px" height="">
+    <img src="static/images/logo-olive.png" alt="Logo" width="" height="200px">
   </a>
 
   <h3 align="center">Routine Ranger</h3>
