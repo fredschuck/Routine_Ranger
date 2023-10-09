@@ -41,6 +41,7 @@
 [![Node][Node.js]][Node-url]
 [![Express][Express.js]][Express-url]
 [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+[![jinja][jinja.com]][jinja-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -97,3 +98,5 @@ Below is an example of how you can instruct your audience on installing and sett
 [Express-url]: https://expressjs.com
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
+[Jinja.com]: https://img.shields.io/badge/jinja-lightgray?style=for-the-badge&logo=jinja&logoColor=black
+[Jinja-url]: https://jinja.palletsprojects.com/en/3.1.x/
