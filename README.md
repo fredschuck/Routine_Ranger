@@ -4,9 +4,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="static/images/logo-olive.png" alt="Logo" width="" height="200px">
-  </a>
 
   <h3 align="center">Routine Ranger</h3>
 
@@ -19,21 +17,12 @@
 </div>
 
 
-
-<!-- TABLE OF CONTENTS --
-
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Product Name Screen Shot][product-screenshot]
 
  **Routine Ranger**  is a minimalistic web app for tracking exercise routines. Log sets, reps, and notes for each workout session. Stay motivated and monitor progress.
-
-
-
-
 
 
 ### Built With
