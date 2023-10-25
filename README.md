@@ -4,7 +4,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="https://github.com/fredschuck/Routine_Ranger/blob/main/.github/RR_banner.png?raw=true" alt="Logo" width="" height="200px">
+    <img src="https://github.com/fredschuck/Routine_Ranger/blob/main/.github/RR_banner.png?raw=true" alt="Logo" width="" height="">
 
   <h3 align="center">Routine Ranger</h3>
 
