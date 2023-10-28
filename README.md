@@ -41,19 +41,18 @@
 ## Roadmap
 
 - [ ] Version 1.0
-    - [x] Create prototype of application using Bootstrap, HTML, and CSS
-    - [x] Add routing logic
-    - [x] Add database logic using Postgres
-    - [ ] Add ability to record bodyweight
+    - 🟢 Create prototype of application using Bootstrap, HTML, and CSS
+    - 🟢 Add routing logic
+    - 🟢 Add database logic using Postgres
+    - 🔴 Add ability to record bodyweight
+    - 🔴 View stats
 - [ ] Version 2.0 
-    - [ ] Add dashboard to view stats
     - [ ] Redesign UI
+    - [ ] Add dashboard
     - [ ] Add user interface logic
-- [ ] Version 3.0
-    - [ ] Add user authentication
     - [ ] Add user profile page
     - [ ] Add user settings page
-    - [ ] Add user interface logic
+    - [ ] Add user authentication
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
