@@ -1,4 +1,4 @@
-from src.models import db, Exercise
+from src.models import db, Exercise, ExerciseAttributes
 
 class Exercises:
     '''This class contains methods for interacting with the Exercise model'''
@@ -12,6 +12,19 @@ class Exercises:
         '''Returns a list of all exercise objects'''
         all_exercises = Exercise.query.all()
         return all_exercises
+    
+    def get_exercise_attributes(self, exercise_id):
+        '''Returns exercise attributes based on the exercise_id'''
+        attributes = ExerciseAttributes.query.filter_by(exercise_id=exercise_id).first()
+
+        if attributes:
+            true_attributes = []
+            for column in ExerciseAttributes.__table__.columns:
+                if getattr(attributes, column.name):
+                    true_attributes.append(column.name)
+            return true_attributes
+        else:
+            return []
 
     def add_exercise(self, exercise_name):
         '''Adds a new exercise to the database'''
@@ -20,7 +33,7 @@ class Exercises:
         db.session.commit()
         return new_exercise
 
-    def update_exercise(self, exercise_id, exercise_name):
+    def edit_exercise(self, exercise_id, exercise_name):
         '''Updates an exercise in the database'''
         exercise = Exercise.query.filter_by(exercise_id=exercise_id).first()
         exercise.exercise_name = exercise_name
