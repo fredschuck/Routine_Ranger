@@ -1,4 +1,4 @@
-from src.models import db, RoutineExercise, Exercise
+from src.models import RoutineExercise
 
 class RoutinesExercises:
     '''This class contains methods to interact with the RoutineExercise model'''
