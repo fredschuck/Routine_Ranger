@@ -41,11 +41,12 @@
 ## Roadmap
 
 - [ ] Version 1.0
-    - 🟢 Create prototype of application using Bootstrap, HTML, and CSS
-    - 🟢 Add routing logic
-    - 🟢 Add database logic using Postgres
-    - 🔴 Add ability to record bodyweight
-    - 🔴 View stats
+    <br>🟢 Create prototype of application using Bootstrap, HTML, and CSS
+    <br>🟢 Add routing logic
+    <br>🟢 Add database logic using Postgres
+    <br>🟢 Add ability to create and add exercises to routines
+    <br>🔴 Add ability to record bodyweight
+    <br>🔴 View stats
 - [ ] Version 2.0 
     - [ ] Redesign UI
     - [ ] Add dashboard
