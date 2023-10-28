@@ -1,4 +1,4 @@
-CREATE DATABASE workout_db;
+CREATE DATABASE routineranger_db;
 
 -- DROP TABLES 
 DROP TABLE IF EXISTS routine;
