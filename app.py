@@ -1,12 +1,12 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 from dotenv import load_dotenv
-from src.models import db, Routine, Exercise, ExerciseAttributes
+from src.models import db
 from src.routines import routines
 from src.exercises import exercises
 from src.exercise_attributes import exercise_attributes
-from src.logged_exercises import logged_exercises
-from src.routine_exercise import routine_exercise
+# from src.logged_exercises import logged_exercises
+# from src.routine_exercise import routine_exercise
 
 
 app = Flask(__name__)
@@ -91,7 +91,7 @@ def log_select():
     return redirect(f'/log_workout/{routine.routine_name}/{routine.routine_id}')
 
 @app.get('/log_workout/<routine_name>/<routine_id>')
-def log_workout(routine_name, routine_id):
+def log_workout(routine_id):
     # get all exercises in routine
     routine_exercises = routines.get_exercises_by_routine_id(routine_id)
     # create a dictionary of exercise attributes
@@ -114,14 +114,8 @@ def log_bodyweight():
     ''' Allow the user to log their bodyweight '''
     return render_template('log_bodyweight.html')
 
-'''
-
-ERROR HANDLING
-
-'''
-
 @app.errorhandler(404)
-def page_not_found(e):
+def page_not_found():
     return redirect('/error')
 
 # DON'T FORGET THAT CARDIO HAS INCLINE
