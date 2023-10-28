@@ -11,7 +11,7 @@
   <p align="center">
     An Python/Flask project!
 
-![Product Name Screen Shot](https://img.shields.io/github/actions/workflow/status/simple-icons/simple-icons/verify.yml?branch=develop&logo=github&label=workflow)
+<!-- ![Product Name Screen Shot](https://img.shields.io/github/actions/workflow/status/simple-icons/simple-icons/verify.yml?branch=develop&logo=github&label=workflow) -->
 
   <br><br><br>
   
@@ -44,9 +44,15 @@
     - [x] Create prototype of application using Bootstrap, HTML, and CSS
     - [x] Add routing logic
     - [x] Add database logic using Postgres
+    - [ ] Add ability to record bodyweight
 - [ ] Version 2.0 
-    - [ ] Redesign UI
     - [ ] Add dashboard to view stats
+    - [ ] Redesign UI
+    - [ ] Add user interface logic
+- [ ] Version 3.0
+    - [ ] Add user authentication
+    - [ ] Add user profile page
+    - [ ] Add user settings page
     - [ ] Add user interface logic
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
