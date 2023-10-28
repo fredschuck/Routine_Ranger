@@ -14,5 +14,5 @@ class RoutinesExercises:
     #     exercise_ids_list = [exercise_id[0] for exercise_id in exercise_ids]
     #     exercises = Exercise.query.filter(Exercise.exercise_id.in_(exercise_ids_list)).all()
     #     return exercises
-    
+ 
 routine_exercise = RoutinesExercises()
