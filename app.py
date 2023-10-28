@@ -80,10 +80,6 @@ def add_exercise():
         routines.add_exercise_to_routine(routine, new_exercise.exercise_id)
     return redirect('/')
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return redirect('/error')
-
 @app.get('/log')
 def log():
     return render_template('routine_select.html', routines=routines.get_all_routines())
@@ -96,13 +92,18 @@ def log_select():
 
 @app.get('/log_workout/<routine_name>/<routine_id>')
 def log_workout(routine_name, routine_id):
-    exercises = routine_exercise.get_exercises_by_routine_id(routine_id)
+    # get all exercises in routine
+    routine_exercises = routines.get_exercises_by_routine_id(routine_id)
+    # create a dictionary of exercise attributes
     attributes = {}
-    for exercise in exercises:
-        attributes_list = exercise_attributes.get_attributes_by_exercise_id(exercise.exercise_id)
+    # for each exercise in routine, get the exercise attributes and add them to the dictionary
+    for exercise in routine_exercises:
+        # get the exercise attributes
+        attributes_list = exercises.get_exercise_attributes(exercise.exercise_id)
+        print(attributes_list)
+        # add the exercise attributes to the dictionary
         attributes[exercise.exercise_id] = attributes_list
-    return render_template('log.html', routine=exercises, attributes=attributes)
-    # return redirect('/error')
+    return render_template('log.html', routine=routine_exercises, attributes=attributes)
 
 @app.post('/log')
 def save_log():
@@ -110,8 +111,18 @@ def save_log():
 
 @app.get('/log_bodyweight')
 def log_bodyweight():
+    ''' Allow the user to log their bodyweight '''
     return render_template('log_bodyweight.html')
 
+'''
+
+ERROR HANDLING
+
+'''
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect('/error')
 
 # DON'T FORGET THAT CARDIO HAS INCLINE
 # Create a name field for exercises that auto completes or auto generates exercise options
