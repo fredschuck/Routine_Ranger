@@ -10,17 +10,19 @@
 
   <p align="center">
     An Python/Flask project!
-    <br />
-    <br />
-    <br />
+
+![Product Name Screen Shot](https://img.shields.io/github/actions/workflow/status/simple-icons/simple-icons/verify.yml?branch=develop&logo=github&label=workflow)
+
+  <br><br><br>
+  
   </p>
 </div>
-
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 ![Product Name Screen Shot][product-screenshot]
+
 
  **Routine Ranger**  is a minimalistic web app for tracking exercise routines. Log sets, reps, and notes for each workout session. Stay motivated and monitor progress.
 
