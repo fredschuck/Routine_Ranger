@@ -31,11 +31,17 @@
             {% for exercise in routine %}
             <h3 class="pt-3">{{exercise.exercise_name}}</h3>
                 <div class="d-flex input-row">
-                    {% for attribute in attributes %}
+                    {% for key, value in attributes.items() %}
+                    {% if key == exercise.exercise_id %}
+                    {% for attribute in value %}
+                    {% if attribute != 'exercise_attributes_id' and attribute != 'exercise_id' %}
                     <div class="flex-item">
                         <label for="time" class="form-label">{{attribute}}</label>
                         <input type="number" class="form-control input-l" id="time" name="form-name" placeholder="">
-                    </div>
+                    </div> 
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
                     {% endfor %}
                 </div>
             {% endfor %}
