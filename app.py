@@ -111,6 +111,8 @@ def save_workout(routine_name, routine_id):
         print(f"{key}: {value}")
 
     form_data = request.form
+    log_date = form_data.get('log_date', 'error')
+    log_time = form_data.get('log_time', 'error')
     exercise_data = {} 
     for key, value in form_data.items():
         parts = key.split('_')
@@ -120,16 +122,26 @@ def save_workout(routine_name, routine_id):
             if exercise_id not in exercise_data:
                 exercise_data[exercise_id] = {}
             exercise_data[exercise_id][attribute] = value
-
-
-
+    for exercise_id, data in exercise_data.items():
+        # print(f"exercise_id: {exercise_id}, data: {data}")
+        # print(exercise_id, log_date, log_time, data['sets'], data['reps'], data['weight'], data['height'], data['speed'], data['distance'], data['time'])
+        # for exercise_id, data in exercise_data.items():
+        # print(f"exercise_id: {exercise_id}, data: {data}")
+        SENTINEL = None
+        sets = data.get('sets', SENTINEL)
+        reps = data.get('reps', SENTINEL)
+        weight = data.get('weight', SENTINEL)
+        height = data.get('height', SENTINEL)
+        speed = data.get('speed', SENTINEL)
+        distance = data.get('distance', SENTINEL)
+        time = data.get('time', SENTINEL)
+        exercises.log_exercise(exercise_id, log_date, log_time, sets, reps, weight, height, speed, distance, time)
+        # exercises.log_exercise(exercise_id, log_date, log_time, data['sets'], data['reps'], data['weight'], data['height'], data['speed'], data['distance'], data['time'])
     return redirect('/')
-
 
 @app.post('/log')
 def save_log():
     ''' Save the user's workout '''
-
     return render_template('routine_select.html', routines=routines.get_all_routines())
 
 @app.get('/log_bodyweight')
