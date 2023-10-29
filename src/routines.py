@@ -32,7 +32,7 @@ class Routines:
         new_routine_exercise = RoutineExercise(routine_id, exercise_id)
         db.session.add(new_routine_exercise)
         db.session.commit()
-        return new_routine_exercise #should it return the exercise instance?
+        return new_routine_exercise
 
     def edit_routine(self, routine_id, routine_name):
         '''Updates a routine in the database'''

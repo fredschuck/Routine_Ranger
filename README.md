@@ -45,7 +45,7 @@
     <br>🟢 Add routing logic
     <br>🟢 Add database logic using Postgres
     <br>🟢 Add ability to create and add exercises to routines
-    <br>🔴 Add ability to record bodyweight
+    <br>🟢 Add ability to record bodyweight
     <br>🔴 View stats
 - [ ] Version 2.0 
     - [ ] Redesign UI

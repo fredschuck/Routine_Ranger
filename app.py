@@ -5,6 +5,7 @@ from src.models import db
 from src.routines import routines
 from src.exercises import exercises
 from src.exercise_attributes import exercise_attributes
+from src.bodyweight import bodyweights
 # from src.logged_exercises import logged_exercises
 # from src.routine_exercise import routine_exercise
 
@@ -86,27 +87,52 @@ def log():
 
 @app.post('/log_select')
 def log_select():
+    ''' Allow the user to select a routine to log'''
     routine_id = request.form.get('routine_droplist', 'error')
     routine = routines.get_routine(routine_id)
     return redirect(f'/log_workout/{routine.routine_name}/{routine.routine_id}')
 
 @app.get('/log_workout/<routine_name>/<routine_id>')
-def log_workout(routine_id):
-    # get all exercises in routine
+def log_workout(routine_name, routine_id):
+    ''' Allow the user to log a workout'''
     routine_exercises = routines.get_exercises_by_routine_id(routine_id)
-    # create a dictionary of exercise attributes
     attributes = {}
-    # for each exercise in routine, get the exercise attributes and add them to the dictionary
     for exercise in routine_exercises:
-        # get the exercise attributes
         attributes_list = exercises.get_exercise_attributes(exercise.exercise_id)
         print(attributes_list)
-        # add the exercise attributes to the dictionary
         attributes[exercise.exercise_id] = attributes_list
-    return render_template('log.html', routine=routine_exercises, attributes=attributes)
+    return render_template('log.html', routine=routine_exercises, attributes=attributes, routine_name=routine_name, routine_id=routine_id)
+
+@app.post('/log_workout/<routine_name>/<routine_id>')
+def save_workout(routine_name, routine_id):
+    ''' Save the user's workout '''
+    print(request.form)
+    for key, value in request.form.items():
+        print(f"{key}: {value}")
+
+    form_data = request.form
+    exercise_data = {}  # Create a dictionary to group attributes by exercise ID
+    for key, value in form_data.items():
+        # Split the field name by underscores to extract exercise ID and attribute
+        parts = key.split('_')
+        if len(parts) == 3 and parts[0] == 'exercise':
+            exercise_id = int(parts[1])
+            attribute = parts[2]
+            if exercise_id not in exercise_data:
+                exercise_data[exercise_id] = {}
+            exercise_data[exercise_id][attribute] = value
+
+    # Now you have a dictionary 'exercise_data' with attributes grouped by exercise ID
+
+    # Your processing logic here...
+
+    return redirect('/')
+
 
 @app.post('/log')
 def save_log():
+    ''' Save the user's workout '''
+
     return render_template('routine_select.html', routines=routines.get_all_routines())
 
 @app.get('/log_bodyweight')
@@ -114,8 +140,18 @@ def log_bodyweight():
     ''' Allow the user to log their bodyweight '''
     return render_template('log_bodyweight.html')
 
+@app.post('/log_bodyweight')
+def save_bodyweight():
+    ''' Save the user's bodyweight '''
+    date = request.form.get('date', 'error')
+    weight = request.form.get('weight', 'error')
+    print(f"date: {date}, bodyweight: {weight}")
+    bodyweights.add_bodyweight(weight, date)
+    return redirect('/')
+
 @app.errorhandler(404)
-def page_not_found():
+def page_not_found(e):
+    print(e)
     return redirect('/error')
 
 # DON'T FORGET THAT CARDIO HAS INCLINE

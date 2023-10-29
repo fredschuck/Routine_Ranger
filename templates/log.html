@@ -16,16 +16,16 @@
 
 <h1 class="text-center pb-5">Log Workout</h1>
 <div class="d-flex flex-column"> 
-    <form action="/log_select" method="post">
+    <form action="/log_workout/{{routine_name}}/{{routine_id}}" method="post">
         <div class="mb-4">
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="date" class="form-label">Date</label>
-                    <input type="date" class="form-control" id="date">
+                    <input type="date" class="form-control" id="date" name="log_date">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="time" class="form-label">Time</label>
-                    <input type="time" class="form-control" id="time" >
+                    <input type="time" class="form-control" id="time" name="log_time">
                 </div>
             </div>
             {% for exercise in routine %}
@@ -33,11 +33,12 @@
                 <div class="d-flex input-row">
                     {% for key, value in attributes.items() %}
                     {% if key == exercise.exercise_id %}
+                    <input type="hidden" name="exercise_id" value="{{exercise.exercise_id}}">
                     {% for attribute in value %}
                     {% if attribute != 'exercise_attributes_id' and attribute != 'exercise_id' %}
                     <div class="flex-item">
                         <label for="time" class="form-label">{{attribute}}</label>
-                        <input type="number" class="form-control input-l" id="time" name="form-name" placeholder="">
+                        <input type="number" class="form-control input-l" id="time" name="exercise_{{ exercise.exercise_id }}_{{ attribute }}" placeholder="">
                     </div> 
                     {% endif %}
                     {% endfor %}

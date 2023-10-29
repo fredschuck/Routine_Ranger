@@ -51,7 +51,7 @@ class ExerciseAttributes(db.Model):
         self.time = time
     
     def __repr__(self):
-        return f'{self.exercise.exercise_name}. Sets: {self.sets}. Reps: {self.reps}. Weight: {self.weight}. Height: {self.height}. Speed: {self.speed}. Distance: {self.distance}. Time: {self.time}'
+        return f'<{self.exercise.exercise_name}> Sets: {self.sets}. Reps: {self.reps}. Weight: {self.weight}. Height: {self.height}. Speed: {self.speed}. Distance: {self.distance}. Time: {self.time}'
 
 # LoggedExercise Model
 class LoggedExercises(db.Model):
@@ -84,7 +84,7 @@ class LoggedExercises(db.Model):
         self.time = time
 
     def __repr__(self):
-        return f'Exercise ID: {self.exercise_id}. Sets: {self.sets}. Reps: {self.reps}. Weight: {self.weight}. Height: {self.height}. Speed: {self.speed}. Distance: {self.distance}. Time: {self.time}'
+        return f'<{self.exercise_id}> Sets: {self.sets}. Reps: {self.reps}. Weight: {self.weight}. Height: {self.height}. Speed: {self.speed}. Distance: {self.distance}. Time: {self.time}'
 
 
 
@@ -100,17 +100,30 @@ class RoutineExercise(db.Model):
         self.routine_id = routine_id
         self.exercise_id = exercise_id
 
-# # Bodyweight Model
-# class Bodyweight(db.Model):
-#     bodyweight_id = db.Column(db.Integer, primary_key=True)
-#     weight = db.Column(db.Integer, nullable=False)
-#     date = db.Column(db.DateTime, nullable=False)
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
-#     user = db.relationship('User', backref='bodyweight_users', lazy=True)
+# Bodyweight Model
+class Bodyweight(db.Model):
+    __tablename__ = 'bodyweight'
 
-#     def __init__(self, weight, date):
-#         self.weight = weight
-#         self.date = date
+    bodyweight_id = db.Column(db.Integer, primary_key=True)
+    weight = db.Column(db.Integer, nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    # user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
+    # user = db.relationship('User', backref='bodyweight_users', lazy=True)
+
+    def __init__(self, weight, date):
+        self.weight = weight
+        self.date = date
+
+    def __repr__(self):
+        return f'<{self.bodyweight_id}> {self.bodyweight}lbs on {self.date}'
+    
+    def serialize(self):
+        return {
+            'bodyweight_id': self.bodyweight_id,
+            'bodyweight': self.bodyweight,
+            'date': self.date
+    }
+
 
 # # User Model
 # class User(db.Model):
