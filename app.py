@@ -123,20 +123,14 @@ def save_workout(routine_name, routine_id):
                 exercise_data[exercise_id] = {}
             exercise_data[exercise_id][attribute] = value
     for exercise_id, data in exercise_data.items():
-        # print(f"exercise_id: {exercise_id}, data: {data}")
-        # print(exercise_id, log_date, log_time, data['sets'], data['reps'], data['weight'], data['height'], data['speed'], data['distance'], data['time'])
-        # for exercise_id, data in exercise_data.items():
-        # print(f"exercise_id: {exercise_id}, data: {data}")
-        SENTINEL = None
-        sets = data.get('sets', SENTINEL)
-        reps = data.get('reps', SENTINEL)
-        weight = data.get('weight', SENTINEL)
-        height = data.get('height', SENTINEL)
-        speed = data.get('speed', SENTINEL)
-        distance = data.get('distance', SENTINEL)
-        time = data.get('time', SENTINEL)
+        sets = data.get('sets', None)
+        reps = data.get('reps', None)
+        weight = data.get('weight', None)
+        height = data.get('height', None)
+        speed = data.get('speed', None)
+        distance = data.get('distance', None)
+        time = data.get('time', None)
         exercises.log_exercise(exercise_id, log_date, log_time, sets, reps, weight, height, speed, distance, time)
-        # exercises.log_exercise(exercise_id, log_date, log_time, data['sets'], data['reps'], data['weight'], data['height'], data['speed'], data['distance'], data['time'])
     return redirect('/')
 
 @app.post('/log')
