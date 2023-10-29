@@ -40,14 +40,14 @@
 <!-- ROADMAP -->
 ## Roadmap
 
-- 🟢 Version 1.0
+- [x] Version 1.0 - COMPLETE
     <br>🟢 Create prototype of application using Bootstrap, HTML, and CSS
     <br>🟢 Add routing logic
     <br>🟢 Add database logic using Postgres
     <br>🟢 Add ability to create routines and add exercises to routines
     <br>🟢 Add ability to create and log exercises
     <br>🟢 Add ability to record bodyweight
-- 🔴 Version 2.0 
+- [ ] Version 2.0 
     <br>🔴 Refactor code to MERN stack
     <br>🔴 View stats (This feature will be added)
     <br>🔴 Redesign UI
