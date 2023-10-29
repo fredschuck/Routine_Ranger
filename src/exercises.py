@@ -1,4 +1,4 @@
-from src.models import db, Exercise, ExerciseAttributes
+from src.models import db, Exercise, ExerciseAttributes, LoggedExercises
 
 class Exercises:
     '''This class contains methods for interacting with the Exercise model'''
@@ -32,6 +32,13 @@ class Exercises:
         db.session.add(new_exercise)
         db.session.commit()
         return new_exercise
+    
+    def log_exercise(self, exercise_id, log_date, log_time, sets, reps, weight, height, speed, distance, time):
+        '''Logs a new exercise to the database'''
+        new_logged_exercise = LoggedExercises(exercise_id, log_date, log_time, sets, reps, weight, height, speed, distance, time)
+        db.session.add(new_logged_exercise)
+        db.session.commit()
+        return new_logged_exercise
 
     def edit_exercise(self, exercise_id, exercise_name):
         '''Updates an exercise in the database'''
