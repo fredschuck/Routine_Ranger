@@ -49,13 +49,11 @@
     <br>🟢 Add ability to record bodyweight
 - [ ] Version 2.0 
     <br>🔴 Refactor code to MERN stack
-    <br>🔴 View stats (This feature will be added)
     <br>🔴 Redesign UI
-    <br>🔴 Add dashboard
-    <br>🔴 Add user interface logic
-    <br>🔴 Add user profile page
-    <br>🔴 Add user settings page
-    <br>🔴 Add user authentication
+    <br>🔴 Add dashboard to view stats
+    <br>🔴 Add user functionality 
+- [ ] Version 3.0
+    <br>🔴 Deploy!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
