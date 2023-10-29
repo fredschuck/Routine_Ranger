@@ -1,15 +1,20 @@
+-- CREATE DATABASE
 CREATE DATABASE routineranger_db;
 
 -- DROP TABLES 
 DROP TABLE IF EXISTS routine;
 DROP TABLE IF EXISTS exercise;
 DROP TABLE IF EXISTS "user" CASCADE;
+DROP TABLE IF EXISTS exercise_attributes;
+DROP TABLE IF EXISTS logged_exercises;
+DROP TABLE IF EXISTS routine_exercise;
+DROP TABLE IF EXISTS bodyweight;
+
 
 -- CREATE TABLES
 CREATE TABLE routine (
     routine_id SERIAL PRIMARY KEY,
     routine_name VARCHAR (80) NOT NULL
-    -- user_id INTEGER REFERENCES "user" ON DELETE CASCADE
 );
 
 CREATE TABLE exercise (
@@ -27,7 +32,6 @@ CREATE TABLE exercise_attributes (
     speed BOOLEAN NOT NULL,
     distance BOOLEAN NOT NULL,
     time BOOLEAN NOT NULL
-    -- user_id INTEGER REFERENCES "user" ON DELETE CASCADE
 )
 
 CREATE TABLE logged_exercises (
@@ -42,8 +46,7 @@ CREATE TABLE logged_exercises (
     height INTEGER,
     speed INTEGER,
     distance INTEGER,
-    time INTEGER,
-    -- user_id INTEGER REFERENCES "user" ON DELETE CASCADE
+    time INTEGER
 );
 
 CREATE TABLE routine_exercise (
@@ -55,14 +58,13 @@ CREATE TABLE routine_exercise (
 CREATE TABLE bodyweight (
     id SERIAL PRIMARY KEY,
     weight INTEGER,
-    date DATE DEFAULT CURRENT_DATE,
-    user_id INTEGER REFERENCES "user" ON DELETE CASCADE
+    date DATE DEFAULT CURRENT_DATE
 );
 
-CREATE TABLE "user" (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR (80) UNIQUE NOT NULL,
-    password VARCHAR (100) NOT NULL,
-    email VARCHAR (100) UNIQUE NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+-- CREATE TABLE "user" (
+--     id SERIAL PRIMARY KEY,
+--     username VARCHAR (80) UNIQUE NOT NULL,
+--     password VARCHAR (100) NOT NULL,
+--     email VARCHAR (100) UNIQUE NOT NULL,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- );
