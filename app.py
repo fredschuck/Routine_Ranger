@@ -111,9 +111,8 @@ def save_workout(routine_name, routine_id):
         print(f"{key}: {value}")
 
     form_data = request.form
-    exercise_data = {}  # Create a dictionary to group attributes by exercise ID
+    exercise_data = {} 
     for key, value in form_data.items():
-        # Split the field name by underscores to extract exercise ID and attribute
         parts = key.split('_')
         if len(parts) == 3 and parts[0] == 'exercise':
             exercise_id = int(parts[1])
@@ -122,9 +121,7 @@ def save_workout(routine_name, routine_id):
                 exercise_data[exercise_id] = {}
             exercise_data[exercise_id][attribute] = value
 
-    # Now you have a dictionary 'exercise_data' with attributes grouped by exercise ID
 
-    # Your processing logic here...
 
     return redirect('/')
 
