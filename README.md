@@ -9,7 +9,7 @@
   <h3 align="center">Routine Ranger</h3>
 
   <p align="center">
-    An Python/Flask project!
+    An Python/Flask project
 
 <!-- ![Product Name Screen Shot](https://img.shields.io/github/actions/workflow/status/simple-icons/simple-icons/verify.yml?branch=develop&logo=github&label=workflow) -->
 
