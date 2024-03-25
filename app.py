@@ -9,7 +9,7 @@ from src.bodyweight import bodyweights
 # from src.logged_exercises import logged_exercises
 # from src.routine_exercise import routine_exercise
 
-
+name = 'main'
 app = Flask(__name__)
 
 # Database Connection
@@ -29,6 +29,9 @@ app.config['SQLALCHEMY_ECHO'] = False # set to True to see SQL queries
 # app.config['ENV'] = 'development'
 # app.config['DEBUG'] = True
 # app.config['TESTING'] = True 
+
+# if name =='main':
+#     app.run(debug=True)
 
 db.init_app(app)
 

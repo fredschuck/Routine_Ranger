@@ -107,8 +107,6 @@ class Bodyweight(db.Model):
     bodyweight_id = db.Column(db.Integer, primary_key=True)
     weight = db.Column(db.Integer, nullable=False)
     date = db.Column(db.DateTime, nullable=False)
-    # user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
-    # user = db.relationship('User', backref='bodyweight_users', lazy=True)
 
     def __init__(self, weight, date):
         self.weight = weight
@@ -123,17 +121,3 @@ class Bodyweight(db.Model):
             'bodyweight': self.bodyweight,
             'date': self.date
     }
-
-
-# # User Model
-# class User(db.Model):
-#     user_id = db.Column(db.Integer, primary_key=True)
-#     user_name = db.Column(db.String(80), nullable=False)
-#     user_email = db.Column(db.String(80), nullable=False)
-#     user_password = db.Column(db.String(80), nullable=False)
-#     bodyweight = db.relationship('Bodyweight', backref='user', lazy=True)
-
-#     def __init__(self, user_name, user_email, user_password):
-#         self.user_name = user_name
-#         self.user_email = user_email
-#         self.user_password = user_password
